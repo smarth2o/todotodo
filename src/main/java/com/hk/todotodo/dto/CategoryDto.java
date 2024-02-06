@@ -10,7 +10,7 @@ import lombok.Getter;
 @AllArgsConstructor
 // @ToString
 public class CategoryDto {
-    private Long unq_id;
-    private Long user_id;
+    private int unq_id;
+    private int user_id;
     private String name;
 }

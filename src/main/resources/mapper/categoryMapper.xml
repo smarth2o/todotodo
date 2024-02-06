@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CategoryMapper">
+    <select id="selectCategories" parameterType="int" resultType="CategoryDto">
+        select * from categories where user_id=#{user_id}
+    </select>
+    <insert id="insertCategory" parameterType="CategoryDto">
+        insert into categories (user_id, name) values (#{user_id}, #{name})
+    </insert>
+</mapper>

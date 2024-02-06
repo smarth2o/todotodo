@@ -3,9 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.hk.todotodo.dto.UserDTO" alias="userDto" />
+        <typeAlias type="com.hk.todotodo.dto.UserDto" alias="UserDto" />
+        <typeAlias type="com.hk.todotodo.dto.CategoryDto" alias="CategoryDto" />
     </typeAliases>
-    <mappers>
-        <mapper resource="/mapper/userMapper.xml"/>
-    </mappers>
 </configuration>

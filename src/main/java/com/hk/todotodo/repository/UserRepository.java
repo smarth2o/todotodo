@@ -1,8 +1,19 @@
 package com.hk.todotodo.repository;
 
-import org.apache.ibatis.annotations.Mapper;
+import com.hk.todotodo.dto.UserDto;
+import lombok.RequiredArgsConstructor;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
-@Mapper
-public interface UserRepository {
-    void register(@Param(""))
+@Repository
+@RequiredArgsConstructor
+public class UserRepository {
+    private final SqlSessionTemplate sql;
+    public UserDto getUserById(String id) {
+        return sql.selectOne("UserMapper.getUserById", id);
+    }
+
+    public void createUser(UserDto newUser) {
+        sql.insert("UserMapper.createUser", newUser);
+    }
 }

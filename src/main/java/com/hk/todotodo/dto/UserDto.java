@@ -11,10 +11,12 @@ import java.time.LocalDate;
 // @ToString
 @Data
 public class UserDto {
-    private Long unq_id;
+    private int unq_id;
     private String id;
     private String name;
     private String email;
     private String password;
     private LocalDate register_date;
 }
+
+
