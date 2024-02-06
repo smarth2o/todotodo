@@ -6,7 +6,16 @@
     <select id="selectCategories" parameterType="int" resultType="CategoryDto">
         select * from categories where user_id=#{user_id}
     </select>
+    <select id="selectCategory" parameterType="int" resultType="CategoryDto">
+        select * from categories where unq_id=#{unq_id}
+    </select>
     <insert id="insertCategory" parameterType="CategoryDto">
         insert into categories (user_id, name) values (#{user_id}, #{name})
     </insert>
+    <update id="updateCategory" parameterType="CategoryDto">
+            update categories set name=#{name} where unq_id=#{unq_id}
+    </update>
+    <delete id="deleteCategory" parameterType="CategoryDto">
+            delete from categories where unq_id=#{unq_id}
+    </delete>
 </mapper>

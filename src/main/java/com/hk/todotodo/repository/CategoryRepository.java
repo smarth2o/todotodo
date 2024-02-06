@@ -20,4 +20,17 @@ public class CategoryRepository {
     public void createCategory(CategoryDto newCategory) {
         sql.insert("CategoryMapper.insertCategory", newCategory);
     }
+    public CategoryDto getCategory(int unqId) {
+        System.out.println("repository"+ unqId);
+        return sql.selectOne("CategoryMapper.selectCategory", unqId);
+    }
+
+    public void updateCategory(CategoryDto updatedCategory) {
+        sql.update("CategoryMapper.updateCategory", updatedCategory);
+    }
+
+    public void deleteCategory(int unqId) {
+        sql.delete("CategoryMapper.deleteCategory", unqId);
+    }
+
 }

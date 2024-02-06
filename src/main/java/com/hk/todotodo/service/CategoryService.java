@@ -13,7 +13,10 @@ public class CategoryService {
 
     private final CategoryRepository categoryRepository;
 
-    // 카테고리 생성
+    public List<CategoryDto> getCategories(int user_id) {
+        return categoryRepository.getCategories(user_id);
+    }
+
     public void createCategory(int user_id, String name) {
         List<CategoryDto> categoryList = categoryRepository.getCategories(user_id);
         boolean categoryExists = categoryList.stream()
@@ -26,6 +29,18 @@ public class CategoryService {
                     .name(name).build();
             categoryRepository.createCategory(newCategory);
         }
+    }
+    public CategoryDto getCategory(int unqId) {
+        System.out.println("service"+ unqId);
+        return categoryRepository.getCategory(unqId);
+    }
+
+    public void updateCategory(CategoryDto updatedCategory) {
+        categoryRepository.updateCategory(updatedCategory);
+    }
+
+    public void deleteCategory(int unqId) {
+        categoryRepository.deleteCategory(unqId);
     }
 
 }

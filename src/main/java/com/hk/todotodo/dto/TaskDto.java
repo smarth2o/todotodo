@@ -1,16 +1,14 @@
 package com.hk.todotodo.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 @Getter
-// @Setter
+@Setter
 @Builder
 @AllArgsConstructor
-// @ToString
+@ToString
 public class TaskDto {
     private Long unq_id;
     private Long user_id;
