@@ -10,14 +10,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 public class TaskDto {
-    private Long unq_id;
-    private Long user_id;
-    private Long goal_id;
+    private int unq_id;
+    private int user_id;
+    private int category_id;
+    private Integer goal_id;
     private String content;
     private LocalDateTime created_on;
     private LocalDate execute_date;
     private LocalDateTime due_by;
     private LocalDateTime finished_on;
-    private boolean urgent_flag;
-    private boolean is_done_flag;
+    private Boolean urgent_flag;
+    private Boolean is_done_flag;
 }

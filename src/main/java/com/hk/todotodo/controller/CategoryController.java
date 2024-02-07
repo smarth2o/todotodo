@@ -32,7 +32,6 @@ public class CategoryController {
     // 카테고리 조회
     @GetMapping("/{unq_id}")
     public ResponseEntity<CategoryDto> getCategory(@PathVariable("unq_id") int unq_id) throws Exception {
-        System.out.println("controller" + unq_id);
         return new ResponseEntity<>(categoryService.getCategory(unq_id), HttpStatus.OK);
     }
 
@@ -50,11 +49,5 @@ public class CategoryController {
         categoryService.deleteCategory(unq_id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    // 특정 카테고리의 태스크 조회
-//    @GetMapping("/{unq_id}/tasks")
-//    public ResponseEntity<List<CategoryDto>> getCategoryTasks(@PathVariable("unq_id") int unq_id) throws Exception {
-//        return new ResponseEntity<>(categoryService.getCategoryTodos(unq_id), HttpStatus.OK);
-//    }
 
 }

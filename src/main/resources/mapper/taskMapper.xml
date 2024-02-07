@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="TaskMapper">
+    <insert id="insertTask" parameterType="TaskDto">
+        insert into tasks (user_id, category_id
+        <if test="goal_id != ''">, goal_id</if>
+        , content, due_by, execute_date)
+        values (#{user_id}, #{category_id}
+        <if test="goal_id != ''">, #{goal_id}</if>
+        , #{content}, #{due_by}, #{execute_date})
+    </insert>
+    <select id="selectTask" parameterType="int" resultType="TaskDto">
+        select * from tasks where unq_id=#{unq_id}
+    </select>
+    <update id="updateTask" parameterType="TaskDto">
+        update tasks set user_id=#{user_id}, category_id=#{category_id}
+        <if test="goal_id != ''">, goal_id=#{goal_id}</if>
+        , content=#{content}, due_by=#{due_by}, execute_date=#{execute_date} where unq_id=#{unq_id}
+    </update>
+    <delete id="deleteTask" parameterType="int">
+        delete from tasks where unq_id=#{unq_id}
+    </delete>
+    <select id="selectTodayTasks" parameterType="int" resultType="TaskDto">
+        select * from tasks where user_id=#{user_id} and execute_date=curdate()
+    </select>
+    <select id="selectCategoryTasks" parameterType="int" resultType="TaskDto">
+        select * from tasks where category_id=#{category_id}
+    </select>
+</mapper>

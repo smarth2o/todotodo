@@ -21,7 +21,6 @@ public class CategoryRepository {
         sql.insert("CategoryMapper.insertCategory", newCategory);
     }
     public CategoryDto getCategory(int unqId) {
-        System.out.println("repository"+ unqId);
         return sql.selectOne("CategoryMapper.selectCategory", unqId);
     }
 

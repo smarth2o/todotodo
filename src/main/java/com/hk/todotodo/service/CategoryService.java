@@ -31,7 +31,6 @@ public class CategoryService {
         }
     }
     public CategoryDto getCategory(int unqId) {
-        System.out.println("service"+ unqId);
         return categoryRepository.getCategory(unqId);
     }
 

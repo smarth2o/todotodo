@@ -11,5 +11,4 @@ public class CategoryDto {
     private int unq_id;
     private int user_id;
     private String name;
-
 }
