@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.cardBackground,
     borderRadius: 10,
     marginVertical: 7,
-    padding: 10,
+    padding: 15,
     flexDirection: "column",
     // justifyContent: "space-around",
   },

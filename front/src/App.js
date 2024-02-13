@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, SafeAreaView } from "react-native";
 import { theme } from "./colors";
 import { useFonts } from "expo-font";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 import { useState, useCallback, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainView from "./screens/MainView";
@@ -34,14 +34,19 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }} onLayout={onLayoutRootView}>
+    <SafeAreaView
+      style={{ flex: 1, backgroundColor: theme.background }}
+      onLayout={onLayoutRootView}
+    >
       <NavigationContainer>
-        <Stack.Navigator 
-        initialRouteName="Onboarding" 
-        screenOptions={{
-          headerShown: false, 
-          contentStyle: { backgroundColor: theme.background},
-          animation: 'fade'}}>
+        <Stack.Navigator
+          initialRouteName="Main"
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: theme.background },
+            animation: "fade",
+          }}
+        >
           <Stack.Screen name="Onboarding" component={OnboardingScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
