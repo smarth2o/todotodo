@@ -4,10 +4,10 @@
     "slug": "todotodo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash2.png",
+      "image": "./src/assets/splash2.png",
       "resizeMode": "contain",
       "backgroundColor": "#8685EF"
     },
@@ -17,23 +17,23 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
       [
         "expo-font",
         {
           "fonts": [
-            "./assets/fonts/NanumSquareNeoOTF-Lt.otf",
-            "./assets/fonts/NanumSquareNeoOTF-Rg.otf",
-            "./assets/fonts/NanumSquareNeoOTF-Bd.otf",
-            "./assets/fonts/NanumSquareNeoOTF-Eb.otf",
-            "./assets/fonts/NanumSquareNeoOTF-Hv.otf"
+            "./src/assets/fonts/NanumSquareNeoOTF-Lt.otf",
+            "./src/assets/fonts/NanumSquareNeoOTF-Rg.otf",
+            "./src/assets/fonts/NanumSquareNeoOTF-Bd.otf",
+            "./src/assets/fonts/NanumSquareNeoOTF-Eb.otf",
+            "./src/assets/fonts/NanumSquareNeoOTF-Hv.otf"
           ]
         }
       ]

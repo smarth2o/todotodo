@@ -12,6 +12,7 @@
     "@babel/preset-react": "^7.23.3",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
+    "axios": "^1.6.7",
     "component-type": "^2.0.0",
     "expo": "~50.0.6",
     "expo-font": "~11.10.2",

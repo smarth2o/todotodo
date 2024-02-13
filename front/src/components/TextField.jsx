@@ -4,20 +4,18 @@ import { theme } from "../colors";
 
 const windowWidth = Dimensions.get('window').width;
 
-const TextField = ({placeholder, type='plain', btnText='', handleBtn, warning=''}) => {
-    const [text, setText] = useState('');
-    const handleTextChange = (inputText) => setText(inputText);
+const TextField = ({onChangeText, value, placeholder, type='plain', btnText='', handleBtn, warning=''}) => {
 
     return (
         <View>
             <View style={styles.textContainer}>
                 <TextInput
                     style={styles.input}
-                    onChangeText={handleTextChange}
-                    value={text}
+                    onChangeText={onChangeText}
+                    value={value}
                     placeholder={placeholder}
                     returnKeyType='next'
-                    secureTextEntry={type==='password' ? 'true' : 'false'}
+                    secureTextEntry={type==='password' ? true : false}
                 />
                 {btnText && <Pressable style={styles.btn} onPress={handleBtn}>
                     <Text style={styles.btnText}>{btnText}</Text>
