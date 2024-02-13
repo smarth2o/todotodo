@@ -1,76 +1,54 @@
 import { StatusBar } from "expo-status-bar";
-import { Pressable, StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { theme } from "./colors";
 import { useFonts } from "expo-font";
-import { useState } from "react";
-import TodoViewScreen from "./screens/TodoView/TodoViewScreen";
-import CategoryViewScreen from "./screens/CategoryView/CategoryViewScreen";
+import * as SplashScreen from 'expo-splash-screen';
+import { useState, useCallback, useEffect } from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import MainView from "./screens/MainView";
+import OnboardingScreen from "./screens/OnboardingScreen";
+import { NavigationContainer } from "@react-navigation/native";
+import RegisterScreen from "./screens/UserView/RegisterScreen";
+import LoginScreen from "./screens/UserView/LoginScreen";
+
+SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
+  const [fontsLoaded, fontError] = useFonts({
+    "NanumSquareNeoOTF-Rg": require("./assets/fonts/NanumSquareNeoOTF-Rg.otf"),
     "NanumSquareNeoOTF-Bd": require("./assets/fonts/NanumSquareNeoOTF-Bd.otf"),
     "NanumSquareNeoOTF-Eb": require("./assets/fonts/NanumSquareNeoOTF-Eb.otf"),
     "NanumSquareNeoOTF-Hv": require("./assets/fonts/NanumSquareNeoOTF-Hv.otf"),
   });
 
-  const [title, setTitle] = useState("todo");
+  const onLayoutRootView = useCallback(async () => {
+    if (fontsLoaded || fontError) {
+      await SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded, fontError]);
+
+  if (!fontsLoaded && !fontError) {
+    return null;
+  }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <StatusBar style="auto" />
-        <View style={styles.header}>
-          <Pressable onPress={() => setTitle("todo")}>
-            <Text
-              style={{
-                ...styles.title,
-                color:
-                  title === "todo"
-                    ? theme.titleSelected
-                    : theme.titleUnselected,
-              }}
-            >
-              투두
-            </Text>
-          </Pressable>
-          <Pressable onPress={() => setTitle("category")}>
-            <Text
-              style={{
-                ...styles.title,
-                color:
-                  title === "category"
-                    ? theme.titleSelected
-                    : theme.titleUnselected,
-              }}
-            >
-              카테고리
-            </Text>
-          </Pressable>
-        </View>
-        <View style={styles.body}>
-          {title === "todo" ? <TodoViewScreen /> : <CategoryViewScreen />}
-        </View>
-      </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }} onLayout={onLayoutRootView}>
+      <NavigationContainer>
+        <Stack.Navigator 
+        initialRouteName="Onboarding" 
+        screenOptions={{
+          headerShown: false, 
+          contentStyle: { backgroundColor: theme.background},
+          animation: 'fade'}}>
+          <Stack.Screen name="Onboarding" component={OnboardingScreen} />
+          <Stack.Screen name="Register" component={RegisterScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Main" component={MainView} />
+        </Stack.Navigator>
+      </NavigationContainer>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: theme.background,
-    paddingHorizontal: 20,
-  },
-  header: {
-    marginTop: 38,
-    flexDirection: "row",
-  },
-  title: {
-    fontSize: 38,
-    fontFamily: "NanumSquareNeoOTF-Hv",
-    paddingHorizontal: 10,
-  },
-  body: {
-    paddingTop: 50,
-  },
-});

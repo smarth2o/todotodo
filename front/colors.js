@@ -1,4 +1,4 @@
-const white = "F8F8F8",
+const white = "#F8F8F8",
   black = "#212126",
   purple = "#8685EF",
   lightPurple = "#DCD9EC";
@@ -11,6 +11,7 @@ export const theme = {
   titleSelected: purple,
   titleUnselected: lightPurple,
   subtitleSelected: black,
+  simpleTitle: black,
 
   cardBackground: pureWhite,
   content: black,
@@ -18,4 +19,14 @@ export const theme = {
   dueDate: red,
 
   addBtn: purple,
+  primaryBtn: purple,
+  secondaryBtn: pureWhite,
+  primaryBtnText: white,
+  secondaryBtnText: purple,
+
+  text: black,
+  btnText: purple,
+  warningText: gray,
+
+  icon: black
 };
