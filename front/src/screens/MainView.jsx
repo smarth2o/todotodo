@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { theme } from "../colors";
 import TodoViewScreen from "./TodoView/TodoViewScreen";
 import CategoryViewScreen from "./CategoryView/CategoryViewScreen";

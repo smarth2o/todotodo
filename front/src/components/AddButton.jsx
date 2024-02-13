@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: theme.addBtn,
-    width: 47,
-    height: 47,
+    width: 50,
+    height: 50,
     borderRadius: 30,
     justifyContent: "center",
     alignItems: "center",
