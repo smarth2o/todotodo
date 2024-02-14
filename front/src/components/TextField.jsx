@@ -4,12 +4,13 @@ import { theme } from "../colors";
 
 const windowWidth = Dimensions.get('window').width;
 
-const TextField = ({onChangeText, value, placeholder, type='plain', btnText='', handleBtn, warning=''}) => {
+const TextField = ({textInputRef, onChangeText, value, placeholder, type='plain', btnText='', handleBtn, warning=''}) => {
 
     return (
         <View>
             <View style={styles.textContainer}>
                 <TextInput
+                    ref={textInputRef}
                     style={styles.input}
                     onChangeText={onChangeText}
                     value={value}

@@ -3,13 +3,14 @@ import { StyleSheet, View, SafeAreaView } from "react-native";
 import { theme } from "./colors";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import MainView from "./screens/MainView";
 import OnboardingScreen from "./screens/OnboardingScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import RegisterScreen from "./screens/UserView/RegisterScreen";
 import LoginScreen from "./screens/UserView/LoginScreen";
+import { RecoilRoot } from 'recoil';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,13 +35,14 @@ export default function App() {
   }
 
   return (
+    <RecoilRoot>
     <SafeAreaView
       style={{ flex: 1, backgroundColor: theme.background }}
       onLayout={onLayoutRootView}
     >
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Main"
+          initialRouteName="Onboarding"
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: theme.background },
@@ -55,5 +57,6 @@ export default function App() {
       </NavigationContainer>
       <StatusBar style="auto" />
     </SafeAreaView>
+    </RecoilRoot>
   );
 }

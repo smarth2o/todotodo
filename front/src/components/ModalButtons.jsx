@@ -20,7 +20,6 @@ const windowWidth = Dimensions.get('window').width; // 화면의 너비
 
 const styles = StyleSheet.create({
     bottomButtons: {
-        // flex: 0.3,
         flexDirection: "row-reverse",
         justifyContent: "space-around",
         alignItems: "center",
@@ -28,10 +27,10 @@ const styles = StyleSheet.create({
     },
     btn: {
         borderRadius: 10,
-        paddingVertical: 12,
-        // paddingHorizontal: 24,
-        marginHorizontal: 2,
-        width: windowWidth * 0.35,
+        paddingVertical: 14,
+        paddingHorizontal: 24,
+        marginHorizontal: 6,
+        // width: windowWidth * 0.35,
     },
     btnText: {
         fontFamily: "NanumSquareNeoOTF-Bd",

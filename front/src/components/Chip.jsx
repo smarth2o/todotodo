@@ -13,7 +13,7 @@ const Chip = ({text}) => {
             onPress={toggleSelected}
             style={[styles.container, selected && styles.containerSelected]}
         >
-            <Text style={styles.text}>{text}</Text>
+            <Text style={[styles.text, selected && styles.textSelected]}>{text}</Text>
         </Pressable>
     )
 }
@@ -37,5 +37,8 @@ const styles = StyleSheet.create({
         fontFamily: "NanumSquareNeoOTF-Bd",
         fontSize: 11,
         color: theme.chipText
+    },
+    textSelected: {
+        color: theme.selectedText
     }
 })
