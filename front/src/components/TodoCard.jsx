@@ -1,13 +1,13 @@
 import { StyleSheet, View, Text } from "react-native";
 import { theme } from "../colors";
 
-const TodoCard = () => {
+const TodoCard = ({task}) => {
   return (
     <View style={styles.card}>
-      <Text style={styles.content}>할일을 기록하고 남겨보세요.</Text>
+      <Text style={styles.content}>{task.content}</Text>
       <View style={styles.info}>
-        <Text style={styles.category}>카테고리</Text>
-        <Text style={styles.dueDate}>2.4 일</Text>
+        <Text style={styles.category}>{task.category_id}</Text>
+        <Text style={styles.dueDate}>{task.dueDate}</Text>
       </View>
     </View>
   );

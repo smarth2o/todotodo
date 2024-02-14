@@ -5,6 +5,7 @@ import BottomButtons from "../../components/BottomButtons";
 import TextField from "../../components/TextField.jsx";
 import SimpleHeader from "../../components/SimpleHeader.jsx";
 import { get } from "../../utils/API.js";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({navigation}) => {
     const [secureText, setSecureText] = useState(true);
@@ -13,12 +14,23 @@ const LoginScreen = ({navigation}) => {
     const [id, setId] = useState('');
     const [password, setPassword] = useState('');
 
+    // 사용자 정보 저장
+    const saveUserInfo = async (userInfo) => {
+        try {
+        await AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+        console.log('User info saved successfully');
+        } catch (error) {
+        console.error('Error saving user info:', error);
+        }
+    };
+
     const handleLogin = async () => {
         try {
             console.log(id, password);
             const params = { id: id, password: password };
             const data = await get('/users/login', params);
             console.log(data);
+            saveUserInfo(data);
             navigation.navigate("Main");
         } catch (error) {
             console.error(error);

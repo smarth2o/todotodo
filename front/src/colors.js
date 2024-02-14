@@ -28,5 +28,14 @@ export const theme = {
   btnText: purple,
   warningText: gray,
 
-  icon: black
+  icon: black,
+
+  modalTitle: black,
+  modalOptionText: black,
+
+  chipBackground: pureWhite,
+  chipText: gray,
+  chipSelected: purple,
+  emptyText: gray,
+  selectedText: purple
 };

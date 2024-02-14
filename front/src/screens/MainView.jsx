@@ -38,7 +38,7 @@ const MainView = () => {
       <View style={styles.body}>
         {title === "todo" ? <TodoViewScreen /> : <CategoryViewScreen />}
       </View>
-      <AddButton onPress={() => {}} />
+      <AddButton />
     </View>
   );
 };

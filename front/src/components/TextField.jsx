@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     input: {
+        flex: 1,
         color: theme.text,
         // fontSize: 13,
         fontFamily: 'NanumSquareNeoOTF-Rg'

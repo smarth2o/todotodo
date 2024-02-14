@@ -40,7 +40,7 @@ export default function App() {
     >
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Onboarding"
+          initialRouteName="Main"
           screenOptions={{
             headerShown: false,
             contentStyle: { backgroundColor: theme.background },

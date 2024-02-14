@@ -1,11 +1,12 @@
 import { StyleSheet, View, Text } from "react-native";
 import TodoCard from "./TodoCard";
 
-const TodoList = () => {
+const TodoList = ({tasks}) => {
   return (
     <View style={styles.container}>
-      <TodoCard />
-      <TodoCard />
+      {tasks.map(task => (
+        <TodoCard key={task.unq_id} task={task} />
+      ))}
     </View>
   );
 };

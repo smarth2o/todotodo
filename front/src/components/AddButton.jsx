@@ -1,14 +1,27 @@
+import { useState } from "react";
 import { StyleSheet, View, Text, Pressable } from "react-native";
 import { theme } from "../colors";
 import { Octicons } from "@expo/vector-icons";
+import BottomSheet from "./BottomSheet";
+import AddTodoModal from "../screens/TodoView/AddTodoModal";
 
-const AddButton = ({ onPress }) => {
+const AddButton = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleBottomSheet = () => {
+    setIsVisible(!isVisible);
+  }
+
   return (
+    <>
     <View style={styles.container}>
-      <Pressable style={styles.button} onPress={onPress}>
+      <Pressable style={styles.button} onPress={toggleBottomSheet}>
         <Octicons name="plus" size={26} color={theme.primaryBtnText} />
       </Pressable>
     </View>
+    {/* <BottomSheet isVisible={isVisible} onClose={toggleBottomSheet} /> */}
+    <AddTodoModal isVisible={isVisible} onClose={toggleBottomSheet}/>
+    </>
   );
 };
 
