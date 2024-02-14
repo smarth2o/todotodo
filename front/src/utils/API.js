@@ -1,19 +1,56 @@
-import axios from 'axios';
+// 192.168.201.18
+const BASE_URL = 'http://localhost:8081'; // Change this to your backend server URL
 
-const API = axios.create({
-    baseURL: 'http://localhost:8080',
-//   timeout: 5000, // 5초 타임아웃
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  withCredentials: true,
-});
+const handleResponse = async (response) => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch (error) {
+    console.error('Failed to parse JSON response:', error);
+    return text;
+  }
+};
 
-API.interceptors.request.use(function (config) {
-  console.log(config.baseURL + config.url);
-  return config;
-}, function (error) {
-  return Promise.reject(error);
-});
+const get = async (path, params = {}) => {
+  const url = new URL(`${BASE_URL}${path}`);
+  Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+  const response = await fetch(url.toString());
+  return handleResponse(response);
+};
 
-export default API;
+const post = async (path, data) => {
+  const url = `${BASE_URL}${path}`;
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  return handleResponse(response);
+};
+
+const put = async (path, data) => {
+  const url = `${BASE_URL}${path}`;
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+  return handleResponse(response);
+};
+
+const del = async (path) => {
+  const url = `${BASE_URL}${path}`;
+  const response = await fetch(url, {
+    method: 'DELETE',
+  });
+  return handleResponse(response);
+};
+
+export { get, post, put, del };

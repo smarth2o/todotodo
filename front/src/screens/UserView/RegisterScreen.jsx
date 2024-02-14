@@ -3,9 +3,10 @@ import { theme } from "../../colors.js"
 import BottomButtons from "../../components/BottomButtons";
 import TextField from "../../components/TextField.jsx";
 import SimpleHeader from "../../components/SimpleHeader.jsx";
-import { registerUser } from "../../services/UserService.js";
+// import { registerUser } from "../../services/UserService.js";
 import { useState } from "react";
-import axios from 'axios';
+// import axios from 'axios';
+import { post } from "../../utils/API.js";
 
 const RegisterScreen = ({navigation}) => {
     const [name, setName] = useState('');
@@ -13,66 +14,21 @@ const RegisterScreen = ({navigation}) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    
-
     const handleRegister = async () => {
+        // 비밀번호 일치하는지 확인
         const registerData = {
             name,
             id,
             password
         }
         try {
-            // const jsonData = JSON.stringify(registerData, (key, value) => {
-            //     if (key === 'self') return;
-            //     return value;
-            // })
-            // 192.168.201.18
-            const res = await fetch('http://localhost:8080/users/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type' : 'application/json'
-                },
-                body: JSON.stringify(registerData)
-            });
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await res.json();
-            return data;
+            const res = await post('/users/register', registerData);
+            console.log(res);
+            navigation.navigate("Login");
         } catch (error) {
             console.error(error);
-            throw error;
         }
     };
-
-    // const handleRegister = async () => {
-    //     console.log("handleRegister");
-    //     const registerData = {
-    //         name,
-    //         id,
-    //         password
-    //     }
-    //     try {
-    //         const res = await registerUser(registerData);
-    //         console.log(res);
-    //     } catch (error) {
-    //         if (error.response) {
-    //             // 서버 응답이 있는 경우
-    //             console.log('Server responded with status:', error.response.status);
-    //             console.log('Response data:', error.response.data);
-    //             console.log('Headers:', error.response.headers);
-    //           } else if (error.request) {
-    //             // 요청이 서버로 전송되었지만 응답이 없는 경우
-    //             console.log('Request sent but no response received:', error.request);
-    //           } else {
-    //             // 요청 전송하기 전에 오류가 발생한 경우
-    //             console.error('Error before request was sent:', error.message);
-    //           }
-    //           console.error('Axios error config:', error.config);
-    //     }
-        
-    // }
 
     const handleIdCheck = () => {
 
@@ -104,8 +60,8 @@ const RegisterScreen = ({navigation}) => {
                     />    
                 </View>
             </View>
-            <BottomButtons primaryText={"가입하기"} secondaryText={"취소하기"} 
-                        onPrimaryPress={handleRegister} onSecondaryPress={() => navigation.goBack()}/>
+            <BottomButtons primaryText={"가입하기"} secondaryText={"로그인하기"} 
+                        onPrimaryPress={handleRegister} onSecondaryPress={() => navigation.navigate("Login")}/>
         </View>
     )
 }

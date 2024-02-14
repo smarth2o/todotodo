@@ -14,7 +14,7 @@ const TextField = ({onChangeText, value, placeholder, type='plain', btnText='', 
                     onChangeText={onChangeText}
                     value={value}
                     placeholder={placeholder}
-                    returnKeyType='next'
+                    enterKeyHint='next'
                     secureTextEntry={type==='password' ? true : false}
                 />
                 {btnText && <Pressable style={styles.btn} onPress={handleBtn}>
