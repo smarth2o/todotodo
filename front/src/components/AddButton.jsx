@@ -30,7 +30,7 @@ export default AddButton;
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    bottom: 30,
+    bottom: 25,
     right: 40,
   },
   button: {

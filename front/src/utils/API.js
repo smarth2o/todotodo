@@ -1,5 +1,6 @@
 // 192.168.201.18
-const BASE_URL = 'http://localhost:8080'; // Change this to your backend server URL
+//  172.20.10.2
+const BASE_URL = 'http://172.20.10.2:8080'; // Change this to your backend server URL
 
 const handleResponse = async (response) => {
   if (!response.ok) {
