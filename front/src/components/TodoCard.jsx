@@ -36,7 +36,7 @@ const TodoCard = ({task}) => {
       <Text style={styles.content}>{task.content}</Text>
       <View style={styles.info}>
         <Text style={styles.category}>{categoryName}</Text>
-        <Text style={styles.dueDate}>{formatLocalDateTime(task.due_by)}</Text>
+        {task.due_by && <Text style={styles.dueDate}>{formatLocalDateTime(task.due_by)}</Text>}
       </View>
       <ConfirmModal 
         isVisible={isConfirmModalVisible}

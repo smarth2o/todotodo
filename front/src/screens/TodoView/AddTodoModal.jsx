@@ -14,7 +14,7 @@ import { userState } from "../../RecoilState";
 import MyDateTimePicker from "../../components/MyDateTimePicker";
 import { parse, format } from 'date-fns';
 
-const AddTodoModal = ({isVisible, onClose}) => {
+const AddTodoModal = ({isVisible, onClose, setTasks}) => {
 
     const user = useRecoilValue(userState);
      const textInputRef = useRef(null);
@@ -52,9 +52,6 @@ const AddTodoModal = ({isVisible, onClose}) => {
     
     const fetchCategories = async () => {
         try {
-            // const userInfo = await getUserInfo();
-            // console.log(userInfo.unq_id);
-            // const user_id = userInfo.unq_id;
             const user_id = user.unq_id;
             console.log(user_id);
             const data = await get(`/categories/${user_id}/all`);
@@ -75,7 +72,7 @@ const AddTodoModal = ({isVisible, onClose}) => {
         let taskData = {
             content: newTodo,
             user_id: user.unq_id,
-            category_id: 2
+            category_id: 5
         }
 
         // dueDate가 있을 때만 변환하여 추가
@@ -91,22 +88,16 @@ const AddTodoModal = ({isVisible, onClose}) => {
         }
 
         console.log("Task Data:", taskData);
-        // const dueDateTime = dueDate ? `${dueDate} 23:59:59` : null;
-        // const localDateTimeString = format(dueDateTime, "yyyy-MM-dd'T'HH:mm:ss");
-        // const taskData = {
-        //     user_id: user.unq_id,
-        //     category_id: 2,
-        //     ...(dueDate && { due_by: localDateTimeString}),
-        //     ...(executeDate && { execute_date: executeDate }),
-        //     content: newTodo
-        // }
-        // console.log(taskData);
+
         try {
             const res = await post('/tasks/add', taskData);
             console.log(res);
             onClose();
+            setNewTodo('');
+            setDueDate(null);
+            setExecuteDate(null);
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     };
 
@@ -133,12 +124,6 @@ const AddTodoModal = ({isVisible, onClose}) => {
                         <Pressable style={styles.icon} onPress={() => setIsDueDateCalendarVisible(true)}>
                             <MaterialCommunityIcons name="calendar-check" size={16} color={theme.icon} />
                         </Pressable>
-                        {/* {isDueDateCalendarVisible && 
-                        <MyDateTimePicker
-                            onSelectDate={setDueDate} 
-                            isVisible={isDueDateCalendarVisible} 
-                            onClose={() => setIsDueDateCalendarVisible(false)}
-                        />} */}
                         {isDueDateCalendarVisible &&
                         <DatePickerModal
                             onSelectDate={setDueDate}

@@ -10,7 +10,7 @@ const handleResponse = async (response) => {
   try {
     return JSON.parse(text);
   } catch (error) {
-    console.error('Failed to parse JSON response:', error);
+    // console.error('Failed to parse JSON response:', error);
     return text;
   }
 };
